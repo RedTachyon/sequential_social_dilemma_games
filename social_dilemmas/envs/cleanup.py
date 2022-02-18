@@ -83,7 +83,7 @@ class CleanupEnv(MapEnv):
 
     @property
     def action_space(self):
-        return DiscreteWithDType(9, dtype=np.uint8)
+        return DiscreteWithDType(9)
 
     def custom_reset(self):
         """Initialize the walls and the waste"""
@@ -113,9 +113,9 @@ class CleanupEnv(MapEnv):
                 agent.get_orientation(),
                 self.all_actions["FIRE"],
                 fire_char=b"C",
-                cell_types=[b"H"],
-                update_char=[b"R"],
-                blocking_cells=[b"H"],
+                cell_types=[b"R"],
+                update_char=[b"H"],
+                blocking_cells=[],
             )
         return updates
 
@@ -196,6 +196,6 @@ class CleanupEnv(MapEnv):
         """How many cells can we spawn waste on?"""
         unique, counts = np.unique(self.world_map, return_counts=True)
         counts_dict = dict(zip(unique, counts))
-        current_area = counts_dict.get(b"H", 0)
+        current_area = counts_dict.get(b"R", 0)
         free_area = self.potential_waste_area - current_area
         return free_area

@@ -2,7 +2,7 @@ from functools import lru_cache
 
 from gym.utils import EzPickle
 from pettingzoo.utils import wrappers
-from pettingzoo.utils.conversions import from_parallel_wrapper
+from pettingzoo.utils.conversions import aec_to_parallel_wrapper as from_parallel_wrapper
 from pettingzoo.utils.env import ParallelEnv
 
 from social_dilemmas.envs.env_creator import get_env_creator
