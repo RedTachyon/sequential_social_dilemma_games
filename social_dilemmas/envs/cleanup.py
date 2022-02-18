@@ -115,7 +115,7 @@ class CleanupEnv(MapEnv):
                 fire_char=b"C",
                 cell_types=[b"R"],
                 update_char=[b"H"],
-                blocking_cells=[],
+                blocking_cells=[b"R"],
             )
         return updates
 
